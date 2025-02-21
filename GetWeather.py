@@ -22,7 +22,7 @@ def getWeather(city):
     weat = requests.get(f'https://api.met.no/weatherapi/locationforecast/2.0/complete?lat={coords[0]}&lon={coords[1]}&altitude=90', headers = headers)
     print(weat.status_code)
     print(type(weat))
-    print(weat.text)
+    # print(weat.text)
     with open("response.json", "w", encoding="utf-8") as file:
         file.write(weat.text)
 
@@ -31,7 +31,7 @@ def getWeather(city):
     
     timeseries = weather_data["properties"]["timeseries"][:6]
     
-    forecast_text = "🌦 **Прогноз на ближайшие 12 часов:**\n\n"
+    forecast_text = "🌦 **Прогноз на ближайшие 6 часов:**\n\n"
 
     for entry in timeseries:
         time_str = entry["time"]
